@@ -4,29 +4,32 @@ export let inputPassword = Vue.component('input-password', {
             <h2>{{title}}</h2>
             <div class="d-flex">
                 <input
-                    v-bind:type="pass" 
+                    v-bind:type="passwordType" 
                     class="form-control" 
                     placeholder="Enter your password"
                 >
                 <button 
                     class="btn btn-primary"
                     @click="showPassword"
-                >show password</button>    
+                >{{showPasswordText}}</button>    
             </div>
             <hr class="mb-4">
         </div>`,
     data() {
         return {
+            showPasswordText: "Show Password",
             title: 'Show the password',
-            pass: 'password'
+            passwordType: 'password'
         }
     },
     methods: {
         showPassword() {
-            if (this.pass == 'password') {
-                this.pass = 'text'
+            if (this.passwordType == 'password') {
+                this.passwordType = 'text'
+                this.showPasswordText = "Hide Password"
             } else {
-                this.pass = 'password'
+                this.passwordType = 'password'
+                this.showPasswordText = "Show Password"
             }
         }
     },
